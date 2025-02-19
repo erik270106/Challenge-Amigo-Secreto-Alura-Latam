@@ -2,7 +2,7 @@ let amigos=[];
 
 function agregarAmigo(){
   function verificadorDeTexto(){
-    let nombreAmigo=document.getElementById('amigo').value.trim();   //limpiar caja
+    let nombreAmigo=document.getElementById('amigo').value.trim().toLowerCase();   //limpiar caja
     const soloLetras = /^[a-zA-Z\s]*$/;     //verifica que solo sea letras 
     console.log(nombreAmigo);
     
@@ -10,12 +10,17 @@ function agregarAmigo(){
       alert("por favor inserta un nombre");
       return;
 
-    } else if (isNaN (nombreAmigo) && soloLetras.test(nombreAmigo)){    // verifica que sean los caracteres validos
+    } else if (soloLetras.test(nombreAmigo)) {   
+      if (amigos.includes(nombreAmigo)) { // Verificar si el nombre ya existe
+      alert("Este nombre ya existe");
+      document.getElementById('amigo').value = "";
+      document.getElementById('amigo').focus();
+      return;
+      console.log(amigos);
+      }
       amigos.push(nombreAmigo);
       document.getElementById('amigo').value = "";
-      console.log(amigos);
       mostrarAmigos();
-
     } else {
       alert("Por favor ingresa un nombre valido");
       document.getElementById('amigo').value = "";
@@ -58,3 +63,4 @@ function sortearAmigo() {// validar que alla amigos en la lista
 
 
      
+
