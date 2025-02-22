@@ -19,7 +19,7 @@ function agregarAmigo(){
       console.log(amigos);
       }
       amigos.push(nombreAmigo);
-      document.getElementById('amigo').value = "";
+    document.getElementById('amigo').value = "";
       mostrarAmigos();
     } else {
       alert("Por favor ingresa un nombre valido");
